@@ -98,7 +98,7 @@ pydantic-settings==2.7.0
 pydantic_core==2.27.2
 pydeck @ file:///home/conda/feedstock_root/build_artifacts/pydeck_1667589451974/work
 Pygments @ file:///home/conda/feedstock_root/build_artifacts/pygments_1733221634316/work
-PyPDF2
+PyPDF2==3.0.1
 PySocks @ file:///home/conda/feedstock_root/build_artifacts/pysocks_1733217236728/work
 python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/python-dateutil_1733215673016/work
 python-dotenv==1.0.1
