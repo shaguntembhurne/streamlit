@@ -1,9 +1,0 @@
-streamlit
-langchain
-faiss-cpu
-transformers
-pandas
-numpy
-scikit-learn
-langchain
-PyPDF2
