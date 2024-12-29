@@ -3,8 +3,8 @@ from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
 from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.chains.question_answering import load_qa_chain
 from langchain.llms import HuggingFaceHub
+from langchain.chains.question_answering import load_qa_chain
 
 with st.sidebar:
     st.title("THIS IS SHAGUN'S WEBSITE")
@@ -21,8 +21,8 @@ def main():
         pdf_reader = PdfReader(pdf)
          
         text = ''
-        for page in pdf_reader.pages:
-            text += page.extract_text()
+        for pages in pdf_reader.pages:
+            text += pages.extract_text()
 
         text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=1000,
@@ -40,6 +40,7 @@ def main():
         if query:
             docs = vector_store.similarity_search(query=query, k=3)
 
+        
             # Initialize HuggingFaceHub LLM
             llm = HuggingFaceHub(
                 repo_id="google/flan-t5-base", 
