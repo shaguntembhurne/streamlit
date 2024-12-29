@@ -3,8 +3,9 @@ from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
 from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.llms import HuggingFaceHub
+
 from langchain.chains.question_answering import load_qa_chain
+from langchain.llms import HuggingFaceHub
 
 with st.sidebar:
     st.title("THIS IS SHAGUN'S WEBSITE")
