@@ -6,3 +6,4 @@ langchain-community
 altair  # Replace altair-split with altair
 transformers
 sentence-transformers
+faiss-cpu
