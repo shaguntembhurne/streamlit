@@ -1,9 +1,10 @@
 import streamlit as st
+import huggingface_hub
 from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
 from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.llms import HuggingFaceHub
+from langchain.llms import huggingface_hub
 from langchain.chains.question_answering import load_qa_chain
 
 with st.sidebar:
