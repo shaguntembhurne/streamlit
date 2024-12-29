@@ -6,4 +6,4 @@ pandas
 numpy
 scikit-learn
 langchain
-PyPD
+PyPDF2
