@@ -1,9 +1,10 @@
+
 import streamlit as st
 from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
 from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.llms import HuggingFaceHub
+from huggingface_hub import InferenceClient
 from langchain.chains.question_answering import load_qa_chain
 
 with st.sidebar:
@@ -41,18 +42,20 @@ def main():
             docs = vector_store.similarity_search(query=query, k=3)
             st.write(docs)  # Debugging line: see what docs contains
 
-            # Initialize HuggingFaceHub LLM with a better model
-            llm = HuggingFaceHub(
-                repo_id="google/flan-t5-large",  # Correct model ID
-                task="text2text-generation",  # Specify the task type
-                model_kwargs={"temperature": 0.3, "max_length": 512},
-                huggingfacehub_api_token="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"  # Replace with your actual Hugging Face token
-            )
-            chain = load_qa_chain(llm=llm, chain_type='stuff')
+            # Initialize the InferenceClient for Hugging Face API
+            client = InferenceClient(token="hf_AtDnEoFBRSfWXlZlwRIEzOvTwTckeQssbCn")  # Replace with your token
             
+            # Specify the model explicitly
+            model_id = "google/flan-t5-large"
+            
+            # Explicitly perform the text2text-generation task using the model
             try:
-                responses = chain.run(input_documents=docs, question=query)
-                st.write(responses)
+                response = client.text2text_generation(
+                    model_id=model_id,
+                    inputs=query,
+                    parameters={"max_length": 512, "temperature": 0.3}
+                )
+                st.write(response['generated_text'])  # Show the generated response
             except Exception as e:
                 st.error(f"Error: {e}")  # Display error if something goes wrong
 
