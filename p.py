@@ -42,7 +42,7 @@ def main():
 
             # Initialize HuggingFaceHub LLM with a better model
             llm = HuggingFaceHub(
-                repo_id="google/flan-t5-large",  # Switched to a better model
+                repo_id="bigscience/T0pp",  # Switched to a better model
                 model_kwargs={"temperature": 0.3, "max_length": 512},
                 huggingfacehub_api_token="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"
             )
