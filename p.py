@@ -40,16 +40,17 @@ def main():
         if query:
             docs = vector_store.similarity_search(query=query, k=3)
 
-        
-            # Initialize HuggingFaceHub LLM
+            # Initialize HuggingFaceHub LLM with a better model
             llm = HuggingFaceHub(
-                repo_id="google/flan-t5-base", 
-                model_kwargs={"temperature": 0.5, "max_length": 256},
+                repo_id="google/flan-t5-large",  # Switched to a better model
+                model_kwargs={"temperature": 0.3, "max_length": 512},
                 huggingfacehub_api_token="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"
             )
+            
             chain = load_qa_chain(llm=llm, chain_type='stuff')
             responses = chain.run(input_documents=docs, question=query)
             st.write(responses)
 
 if __name__ == '__main__':
     main()
+
