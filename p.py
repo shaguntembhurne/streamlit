@@ -43,12 +43,14 @@ def main():
 
             # Initialize HuggingFaceHub LLM with a better model
             llm = HuggingFaceHub(
-                repo_id="google/flan-t5-large",  # Switched to a better model
+                repo_id="google/flan-t5-large",  # Correct model ID
+                task="text2text-generation",  # Specify the task type
                 model_kwargs={"temperature": 0.3, "max_length": 512},
-                huggingfacehub_api_token="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"  # Replace with your actual token
+                huggingfacehub_api_token="your_token"  # Replace with your actual Hugging Face token
             )
             
             chain = load_qa_chain(llm=llm, chain_type='stuff')
+
             
             try:
                 responses = chain.run(input_documents=docs, question=query)
