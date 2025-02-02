@@ -45,7 +45,7 @@ def main():
             llm = HuggingFaceHub(
                 repo_id="google/flan-t5-large",  # Switched to a better model
                 model_kwargs={"temperature": 0.3, "max_length": 512},
-                huggingfacehub_api_token="your_token"  # Replace with your actual token
+                huggingfacehub_api_token="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"  # Replace with your actual token
             )
             
             chain = load_qa_chain(llm=llm, chain_type='stuff')
